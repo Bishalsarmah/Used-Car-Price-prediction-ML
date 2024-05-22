@@ -13,6 +13,10 @@ cars_data = pd.read_csv(r"C:\Users\99bis\Used Car Price prediction ML\Dataset\Ca
 def get_brand_name(car_name):
     car_name = car_name.split()[0]
     return car_name.strip(' ')
+# Load Lottie animation
+lottie_animation_url = "https://assets10.lottiefiles.com/packages/lf20_khzniaya.json"  
+lottie_animation = load_lottie_url(lottie_animation_url) 
+
 
 cars_data['name'] = cars_data['name'].apply(get_brand_name)
 
@@ -47,4 +51,4 @@ if st.button("Predict"):
     )
     st.write(input_data_model)
     predict = pipeline.predict(input_data_model)
-    st.write(f"Predicted Car Price: {predict[0]}")
+    st.write(f"Predicted Car Price: {predict[0]:,.2f}")
